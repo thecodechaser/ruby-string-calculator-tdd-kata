@@ -7,11 +7,10 @@ class StringCalculator
 
     if numbers.start_with?("//")
       header, numbers = numbers.split("\n", 2)
-      delimiters = [header[2]]
+      delimiters = extract_delimiters(header)
     end
 
     nums = numbers.split(Regexp.union(delimiters)).map(&:to_i)
-
     negatives = nums.select { |n| n < 0 }
     raise "negative numbers not allowed #{negatives.join(',')}" if negatives.any?
 
@@ -20,11 +19,10 @@ class StringCalculator
 
   def self.extract_delimiters(header)
     if header.include?("[")
-      header.scan(/\[(.?)\]/).flatten
+      header.scan(/\[(.*?)\]/).flatten
     else
       [header[2]]
     end
   end
-
 
 end
