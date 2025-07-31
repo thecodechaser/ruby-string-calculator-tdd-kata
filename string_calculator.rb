@@ -18,4 +18,13 @@ class StringCalculator
     nums.reject { |n| n > 1000 }.sum
   end
 
+  def self.extract_delimiters(header)
+    if header.include?("[")
+      header.scan(/\[(.?)\]/).flatten
+    else
+      [header[2]]
+    end
+  end
+
+
 end
