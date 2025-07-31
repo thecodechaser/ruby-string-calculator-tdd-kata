@@ -2,7 +2,15 @@ class StringCalculator
 
   def self.add(numbers)
     return 0 if numbers.empty?
-    numbers.split(/[\n,]/).map(&:to_i).sum
+    
+    delimiters = [",", "\n"]
+
+    if numbers.start_with?("//")
+      header, numbers = numbers.split("\n", 2)
+      delimiters = [header[2]]
+    end
+
+    numbers.split(Regexp.union(delimiters)).map(&:to_i).sum
   end
 
 end
