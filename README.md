@@ -2,7 +2,7 @@
 
 # Ruby String Calculator TDD Kata
 
-> This is a TDD implementation of the classic **String Calculator Kata** using Ruby and RSpec.
+> This is a TDD implementation of the **String Calculator Kata** using Ruby and RSpec.
 
 ## Built With
 
